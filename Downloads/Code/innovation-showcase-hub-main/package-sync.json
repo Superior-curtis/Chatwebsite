@@ -1,0 +1,16 @@
+{
+  "name": "gibc-sheets-sync",
+  "version": "1.0.0",
+  "description": "Sync participant data from Google Sheets to Firestore",
+  "main": "syncFromSheets.js",
+  "scripts": {
+    "sync": "node syncFromSheets.js",
+    "watch": "node syncFromSheets.js --watch",
+    "sync:interval": "node syncFromSheets.js --watch --interval=10"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "firebase-admin": "^12.0.0",
+    "googleapis": "^133.0.0"
+  }
+}

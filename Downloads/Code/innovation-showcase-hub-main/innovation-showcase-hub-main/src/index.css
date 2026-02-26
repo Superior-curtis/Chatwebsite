@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 95%;
+
+    --card: 222 40% 10%;
+    --card-foreground: 210 40% 95%;
+
+    --popover: 222 40% 10%;
+    --popover-foreground: 210 40% 95%;
+
+    --primary: 190 100% 50%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 260 80% 60%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 30% 15%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 280 80% 55%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 30% 18%;
+    --input: 222 30% 18%;
+    --ring: 190 100% 50%;
+
+    --radius: 0.75rem;
+
+    --neon-cyan: 190 100% 50%;
+    --neon-purple: 260 80% 60%;
+    --neon-pink: 320 80% 55%;
+    --neon-blue: 220 90% 55%;
+    --gold: 45 100% 55%;
+    --gold-foreground: 222 47% 6%;
+
+    --glass-bg: 222 40% 10%;
+    --glass-border: 222 30% 25%;
+
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 210 40% 95%;
+    --sidebar-primary: 190 100% 50%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 222 30% 15%;
+    --sidebar-accent-foreground: 210 40% 95%;
+    --sidebar-border: 222 30% 18%;
+    --sidebar-ring: 190 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-card/40 backdrop-blur-xl border border-glass-border rounded-xl;
+  }
+
+  .glass-strong {
+    @apply bg-card/60 backdrop-blur-2xl border border-glass-border rounded-xl;
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.3),
+                0 0 45px hsl(var(--primary) / 0.1);
+  }
+
+  .neon-glow-purple {
+    box-shadow: 0 0 15px hsl(var(--secondary) / 0.3),
+                0 0 45px hsl(var(--secondary) / 0.1);
+  }
+
+  .neon-glow-gold {
+    box-shadow: 0 0 15px hsl(var(--gold) / 0.4),
+                0 0 45px hsl(var(--gold) / 0.15);
+  }
+
+  .neon-text {
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5),
+                 0 0 40px hsl(var(--primary) / 0.2);
+  }
+
+  .neon-text-purple {
+    text-shadow: 0 0 10px hsl(var(--secondary) / 0.5),
+                 0 0 40px hsl(var(--secondary) / 0.2);
+  }
+
+  .neon-text-gold {
+    text-shadow: 0 0 10px hsl(var(--gold) / 0.5),
+                 0 0 40px hsl(var(--gold) / 0.2);
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg,
+      hsl(222 47% 6%) 0%,
+      hsl(240 40% 12%) 30%,
+      hsl(260 40% 15%) 60%,
+      hsl(220 50% 10%) 100%
+    );
+  }
+
+  .gradient-card {
+    background: linear-gradient(135deg,
+      hsl(var(--card) / 0.6) 0%,
+      hsl(var(--muted) / 0.3) 100%
+    );
+  }
+
+  .gradient-neon-border {
+    border-image: linear-gradient(135deg,
+      hsl(var(--primary)),
+      hsl(var(--secondary)),
+      hsl(var(--accent))
+    ) 1;
+  }
+
+  .sparkle {
+    animation: sparkle 2s ease-in-out infinite;
+  }
+
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .pulse-neon {
+    animation: pulseNeon 2s ease-in-out infinite;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; filter: brightness(1); }
+  50% { opacity: 0.8; filter: brightness(1.3); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseNeon {
+  0%, 100% {
+    box-shadow: 0 0 5px hsl(var(--primary) / 0.3),
+                0 0 20px hsl(var(--primary) / 0.1);
+  }
+  50% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.5),
+                0 0 60px hsl(var(--primary) / 0.2);
+  }
+}
+
+@keyframes gridMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(50px); }
+}

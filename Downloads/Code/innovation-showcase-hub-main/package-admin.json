@@ -1,0 +1,54 @@
+{
+  "name": "gibc-admin-cli",
+  "version": "1.0.0",
+  "description": "Admin CLI and Google Sheets Sync for Global Innovation Build Challenge",
+  "main": "admin-cli.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "admin": "node admin-cli.js",
+    "admin:help": "node admin-cli.js --help",
+    "sync": "node syncFromSheets.js",
+    "sync:watch": "node syncFromSheets.js --watch",
+    "sync:interval": "node syncFromSheets.js --watch --interval=10",
+    "deploy": "node deploy.js",
+    "start:deploy": "bash deploy_and_sync.sh || cmd /c deploy_and_sync.bat",
+    "deploy:offline": "bash deploy_and_sync.sh --offline || cmd /c deploy_and_sync.bat --offline",
+    "deploy:frontend": "bash deploy_and_sync.sh --frontend-only || cmd /c deploy_and_sync.bat --frontend-only",
+    "deploy:functions": "bash deploy_and_sync.sh --functions-only || cmd /c deploy_and_sync.bat --functions-only",
+    "deploy:sync": "bash deploy_and_sync.sh --sync-only || cmd /c deploy_and_sync.bat --sync-only"
+  },
+  "bin": {
+    "gibc-admin": "admin-cli.js"
+  },
+  "keywords": [
+    "firebase",
+    "hackathon",
+    "admin-cli",
+    "google-sheets",
+    "certificate",
+    "token-management"
+  ],
+  "author": "GIBC Team",
+  "license": "MIT",
+  "dependencies": {
+    "csv-writer": "^1.6.0",
+    "dotenv": "^16.4.7",
+    "firebase-admin": "^12.0.0",
+    "googleapis": "^133.0.0"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {
+    "firebase-tools": "^13.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gibc/platform"
+  },
+  "bugs": {
+    "url": "https://github.com/gibc/platform/issues"
+  },
+  "homepage": "https://github.com/gibc/platform#readme"
+}

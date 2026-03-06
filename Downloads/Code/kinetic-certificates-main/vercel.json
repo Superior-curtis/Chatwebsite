@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd kinetic-certificates-main && npm install && npm run build",
+  "outputDirectory": "kinetic-certificates-main/dist",
+  "framework": "vite"
+}

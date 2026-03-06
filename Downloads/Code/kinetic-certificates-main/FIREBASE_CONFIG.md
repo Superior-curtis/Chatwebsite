@@ -1,0 +1,36 @@
+# Firebase Configuration
+
+## Project Details
+- **App Nickname**: gibc-cert
+- **Project ID**: gibc-cet
+- **App ID**: 1:240565383245:web:2f6e7db90401c0ed0d6c04
+
+## Environment Variables
+
+Create a `.env` file in the root directory with:
+
+```
+VITE_FIREBASE_API_KEY=AIzaSyBY8oUUv75AKZ21RBepBgoLWdNm5A7Dwb4
+VITE_FIREBASE_AUTH_DOMAIN=gibc-cet.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=gibc-cet
+VITE_FIREBASE_STORAGE_BUCKET=gibc-cet.firebasestorage.app
+VITE_FIREBASE_MESSAGING_SENDER_ID=240565383245
+VITE_FIREBASE_APP_ID=1:240565383245:web:2f6e7db90401c0ed0d6c04
+VITE_FIREBASE_MEASUREMENT_ID=G-QL0DP656D0
+```
+
+## Installed Firebase Modules
+- firebase (main SDK)
+- firebase/app
+- firebase/auth
+- firebase/firestore
+- firebase/storage
+- firebase/analytics
+
+## Firebase Configuration File
+The Firebase configuration is set up in `src/config/firebase.ts` and exports:
+- `app` - Firebase app instance
+- `auth` - Firebase Authentication
+- `db` - Firestore Database
+- `storage` - Cloud Storage
+- `analytics` - Analytics service

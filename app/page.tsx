@@ -1735,13 +1735,15 @@ export default function Page() {
 /* ═══════════════════════════════════════════════
    FLOATING CHAT WIDGET DEMO
 ═══════════════════════════════════════════════ */
-const demoMessages = [
-  { role: "assistant" as const, text: "Hi! I'm your NeuralChat assistant. How can I help you today? 👋" },
+type ChatRole = 'assistant' | 'user';
+type Message = { role: ChatRole; text: string };
+const demoMessages: Message[] = [
+  { role: "assistant", text: "Hi! I'm your NeuralChat assistant. How can I help you today? 👋" },
 ];
 
 function ChatWidgetBubble() {
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState(demoMessages);
+  const [messages, setMessages] = useState<Message[]>(demoMessages);
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);
   const streamRef = useRef<string[]>(["Great", " question!", " With NeuralChat", " you can build", " powerful AI", " chatbots", " in minutes.", " Try it now!"]);

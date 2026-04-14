@@ -1,0 +1,14 @@
+name = "chatwebsite-worker"
+main = "worker/worker.js"
+compatibility_date = "2026-04-14"
+
+# Fill these in or set via environment in CI
+# account_id = "your-account-id"
+# workers_dev = true
+
+[build]
+command = ""
+
+[env.production]
+# account_id = "your-account-id"
+# route = "yourdomain.com/api/*"

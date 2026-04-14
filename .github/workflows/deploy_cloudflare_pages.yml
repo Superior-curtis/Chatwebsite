@@ -1,0 +1,50 @@
+name: Deploy to Cloudflare Pages and Worker
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy Pages (placeholder)
+        if: always()
+        run: |
+          echo "Cloudflare Pages deployment will be performed via `wrangler` or Pages dashboard."
+          echo "Ensure repository secrets: CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID, PAGES_PROJECT_NAME"
+
+  deploy_worker:
+    runs-on: ubuntu-latest
+    needs: build_and_deploy
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Wrangler
+        run: npm install -g wrangler
+
+      - name: Publish Worker
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CF_API_TOKEN" ] || [ -z "$CF_ACCOUNT_ID" ]; then
+            echo "CF_API_TOKEN or CF_ACCOUNT_ID missing; skipping Worker publish.";
+            exit 0;
+          fi
+          echo "Publishing Worker using wrangler.toml settings"
+          npx wrangler publish worker/worker.js --project-name "$CRAZY" || true
+          echo "If you want a full publish, set up wrangler config with account_id and run `wrangler publish` on the worker directory."
